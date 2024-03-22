@@ -37,11 +37,10 @@ def scan(start_path: Path):
     print("")
     print("Results:")
     print("")
-    dupes = []
     for hash_ in hashes:
         count = len(hashes[hash_])
         if count > 1:
-            dupes.append(f"{count} dupes for {hash_}: {' '.join(hashes[hash_])}")
+            print(f"{count} dupes for {hash_}: {' '.join(hashes[hash_])}")
     print(f"Found {len(hashes)} unique files")
 
 
@@ -51,4 +50,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     start_path = sys.argv[1] if len(sys.argv) == 2 else "."
-    scan(Path(start_path))
+    scan(Path(start_path).resolve())
